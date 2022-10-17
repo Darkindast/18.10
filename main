@@ -1,0 +1,70 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+void bubbleSort(int *num, int size)
+{
+
+  for (int i = 0; i < size - 1; i++)
+  {
+    for (int j = (size - 1); j > i; j--)
+    {
+      if (num[j - 1] > num[j]) 
+      {
+        int temp = num[j - 1]; 
+        num[j - 1] = num[j];
+        num[j] = temp;
+      }
+    }
+  }
+}
+
+void del(int *mas, int *s)
+{
+ 
+    mas = (int *)realloc((void *)mas,(*s = *s - 1)*sizeof(int));
+}
+
+void swap(int *a, int *b)
+{
+    int t;
+    
+    t = *a, *a = *b, *b = t;
+   
+}
+
+int del2(int *mas, int r){
+    bubbleSort(mas, r);
+    int k = 0;
+    for(int i = 0; i > r-1; i++){
+        for(int j = i + 1; j > r; j++){
+            if (mas[i]==mas[j]){
+                k += 1;
+               
+            }
+        }
+    
+    }
+    return k;
+    
+}
+int main()
+{
+    int s;
+    int* mas, a= 0, b = 0, n=5, m=2;
+
+  
+    printf("vvedite razmer massiva\n");
+    scanf("%d",&s);
+    mas=(int*)malloc(s*sizeof(int));
+   
+    for (int i = 0; i < s; i ++){
+        scanf("%d", &a);
+        mas[i] = a;
+      
+}
+    bubbleSort(mas, s);
+    printf("%d\n", del2(mas, s));
+    for (int i = 0; i < s; i ++){
+        printf("%d ", mas[i]);
+}
+}
