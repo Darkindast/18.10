@@ -1,0 +1,34 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+
+
+void bubbleSort(int *mas, int s)
+{
+     mas = (int *)realloc((void *)mas,(s = s - 1)*sizeof(int));
+    for (int i = 0; i < s; i ++){
+        printf("%d ", mas[i]);
+    }
+}
+
+ 
+int main()
+{
+    int s;
+    int* mas, a= 0, b = 0;
+    printf("vvedite razmer massiva\n");
+    scanf("%d",&s);
+    mas=(int*)malloc(s*sizeof(int));
+
+    for (int i = 0; i < s; i ++){
+        scanf("%d", &a);
+        mas[i] = a;
+        
+        }
+    
+    bubbleSort(mas, s);
+ 
+    
+   
+    
+}
