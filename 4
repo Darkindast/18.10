@@ -1,0 +1,56 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+
+void del(int *mas, int *s)
+{
+ 
+    mas = (int *)realloc((void *)mas,(*s = *s - 1)*sizeof(int));
+    printf("%d\n", *s);
+    
+    
+}
+
+void del2(int *mas, int s)
+{
+ 
+    mas = (int *)realloc((void *)mas,(s = s - 1)*sizeof(int));
+    printf("%d\n", s);
+    
+    
+}
+
+void swap(int a, int b)
+{
+    int t;
+    
+    t = a, a = b, b = t;
+    printf("%d %d", a, b);
+}
+
+
+
+
+int main()
+{
+    int s;
+    int* mas, a= 0, b = 0, n=5, m=2;
+
+  
+    printf("vvedite razmer massiva\n");
+    scanf("%d",&s);
+    mas=(int*)malloc(s*sizeof(int));
+
+    for (int i = 0; i < s; i ++){
+        scanf("%d", &a);
+        mas[i] = a;
+        }
+    del(mas, &s);
+  
+ 
+    for (int i = 0; i < s; i ++){
+        printf("%d\n", s);
+        printf("%d\n ", mas[i]);
+    }
+   
+}
