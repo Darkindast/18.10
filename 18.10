@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <stdlib.h>
+ 
+void del(int *mass, int n){
+    int i, j, k, h, f = 0;
+    
+    for(i=0; i<n-1; i++) {
+        for(j=i+1; j<n; j++) {
+            if(mass[i]==mass[j]) {
+                for(k=j; k<n-1; k++){
+                    mass[k]=mass[k+1];
+                }
+                n--;
+                j--;
+              
+            }
+        }
+    }
+    printf("Итоговый массив: ");
+    
+    for(i=0; i<n; i++){
+        
+        printf("%d ", mass[i]);
+    }
+    
+}
+int main ()
+{
+    int n=0, i, a= 0;
+    int *mass;  
+    printf("Введите количество элементов в массиве:\n");
+    scanf("%d", &n);
+    mass=(int*)malloc((n)*sizeof(int));
+    if (mass == NULL){ //*Проверяем выделиласть память или нет
+        exit;
+    } 
+    printf("Введите сначала индекс элемента массива, затем сам элемент:\n");
+    for(i=0; i<n; i++) { 
+        scanf("%d", &a);
+        scanf("%d",&mass[a]);
+    }
+    printf("Начальный массив: ");
+    for(i=0; i<n; i++)
+        printf("%d ", mass[i]);
+    printf("\n");
+  
+    del(mass, n);
+    free(mass);
+    return 0;
+}
