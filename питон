@@ -1,0 +1,4 @@
+mas = list(map(int, input().split()))
+print(*mas)
+mas = set(mas)
+print(*mas)
