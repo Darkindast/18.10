@@ -64,5 +64,7 @@ int main ()
     for(i=0; i<n; i++){
         printf("%d ", mass[i]);
     }
+    free(mass);
     return 0;
+    
 }
