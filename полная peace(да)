@@ -1,0 +1,68 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void add(int *mas, int *s, int t)/*Функция по увеличению размера массива*/
+{
+    int k = *s;
+    mas = (int *)realloc((int *)mas,(*s = *s + t)*sizeof(int)); /*Функция по увеличению размера массива*/
+}
+
+
+
+void change1(int *mas, int *s, int a)/*Функция,которая выполняет сдвиг элементов, если мы не меняем последний элемент*/
+{
+    int k = *s, tmp = 0;
+    for (int i = *s-2; i >=a; i--){
+        
+        tmp = mas[i], mas[i] = mas[i -1], tmp = mas[i-1];
+    }
+
+}
+
+void change2(int *mas, int *s, int a)/*Функция,которая выполняет сдвиг элементов, если мы меняем именно последний элемент*/
+{
+    int k = *s, tmp = 0;
+    mas = (int *)realloc((int *)mas,(*s = *s + 1)*sizeof(int));
+    for (int i = *s-1; i >=a; i--){
+        
+        tmp = mas[i], mas[i] = mas[i -1], tmp = mas[i-1];
+        
+      
+    }
+
+}
+int main ()
+{
+    int n=0, i, a= 0, t =0, k= 0;
+    int *mass;
+    printf("Введите количество элементов в массиве:\n");
+    scanf("%d", &n);
+    mass=(int*)malloc((n)*sizeof(int));
+    for(i=0; i<n; i++)
+        mass[i]= 0;
+    printf("Введите сначала индекс элемента массива, затем сам элемент:\n");
+    k = n;
+    for(i=0; i<n; i++) {
+        scanf("%d",&a);
+        if (a > n-1){
+            
+            t = a - (n - 1);
+            add(mass, &n, t);
+          
+        }
+        else if (mass[a] != 0){
+            if (a == n - 1){
+                change2(mass, &n, a);
+            }
+            else{
+                change1(mass, &n, a);
+            }
+        }
+        scanf("%d",&mass[a]);
+    }
+    printf("Итоговый массив: ");
+    for(i=0; i<n; i++){
+        printf("%d ", mass[i]);
+    }
+    return 0;
+}
